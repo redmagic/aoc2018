@@ -1,0 +1,23 @@
+{
+  "name": "aoc2018",
+  "version": "1.0.0",
+  "description": "Solutions for AOC 2018, Javascript based",
+  "main": "index.js",
+  "scripts": {
+    "solve": "node src/solve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redmagic/aoc2018.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/redmagic/aoc2018/issues"
+  },
+  "homepage": "https://github.com/redmagic/aoc2018#readme",
+  "dependencies": {
+    "rxjs": "^6.3.3"
+  }
+}
