@@ -1,5 +1,5 @@
-const { concat, from } = require('rxjs');
-const { bufferCount, filter, groupBy, map, mergeMap, reduce } = require('rxjs/operators');
+const { from } = require('rxjs');
+const { bufferCount, filter, groupBy, map, mergeMap, reduce, tap } = require('rxjs/operators');
 
 module.exports.run = (input) => {
 
@@ -53,11 +53,12 @@ module.exports.run = (input) => {
             }
         }),
         reduce((sleepiestGuard, someGuard) => someGuard.total > sleepiestGuard.total ? someGuard : sleepiestGuard),
+        tap(console.log),
         map(sleepiestGuard => sleepiestGuard.id * sleepiestGuard.minute[0])
     );
 
     answer$.subscribe(console.log);
 
-    console.log(Date.now() - start);
+    console.log(`${Date.now() - start}ms`);
 
 };
