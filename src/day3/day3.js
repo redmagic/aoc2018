@@ -6,6 +6,8 @@ const sample = [
 
 module.exports.run = (input) => {
 
+    const start = Date.now();
+
     const flatten = (arr) => arr.reduce((a, c) => a.concat(c), []);
 
     const exp = /^#(\d+) @ (\d+),(\d+): (\d+)x(\d+)$/;
@@ -74,5 +76,7 @@ module.exports.run = (input) => {
 
     console.log('3A:', solve3a(input));
     console.log('3B:', solve3b(input));
+    const duration = Date.now() - start;
+    console.log(duration);
 
 };
