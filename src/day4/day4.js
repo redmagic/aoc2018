@@ -32,7 +32,7 @@ module.exports.run = (input) => {
 
     // minutesPerGuard$.subscribe(console.log);
 
-    const answer$ = minutesPerGuard$
+    const sleepyGuard$ = minutesPerGuard$
     .pipe(
         map(minutesPerGuard => {
             return [
@@ -51,13 +51,25 @@ module.exports.run = (input) => {
                 id: guard[0],
                 ...info
             }
-        }),
+        })
+    );
+
+    const answer4a$ = sleepyGuard$
+    .pipe(
         reduce((sleepiestGuard, someGuard) => someGuard.total > sleepiestGuard.total ? someGuard : sleepiestGuard),
         tap(console.log),
         map(sleepiestGuard => sleepiestGuard.id * sleepiestGuard.minute[0])
     );
 
-    answer$.subscribe(console.log);
+    const answer4b$ = sleepyGuard$
+    .pipe(
+        reduce((sleepiestGuard, someGuard) => someGuard.minute[1] > sleepiestGuard.minute[1] ? someGuard : sleepiestGuard),
+        tap(console.log),
+        map(sleepiestGuard => sleepiestGuard.id * sleepiestGuard.minute[0])
+    );
+
+    answer4a$.subscribe(console.log);
+    answer4b$.subscribe(console.log);
 
     console.log(`${Date.now() - start}ms`);
 
